@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Classroom</title>
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png" type="image/x-icon"> <!-- Añade esta línea -->
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400&display=swap');
@@ -51,6 +51,12 @@
         button:hover {
             background-color: #45a049;
         }
+        iframe {
+            width: 80%;
+            height: 500px;
+            border: none;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -62,18 +68,14 @@
     <div class="container">
         <input type="text" id="url" placeholder="Enter URL to redirect">
         <button onclick="redirect()">Redirect</button>
+        <iframe id="iframe" src="about:blank"></iframe>
     </div>
     
     <script>
         function redirect() {
             const url = document.getElementById('url').value;
             if (url) {
-                const newWindow = window.open('', '_blank');
-                newWindow.document.write(
-                    '<html><head><title>Redirecting...</title></head>' +
-                    `<body><script>window.location.replace("${url}");<\/script></body></html>`
-                );
-                newWindow.document.close();
+                document.getElementById('iframe').src = url;
             } else {
                 alert('Please enter a valid URL');
             }
