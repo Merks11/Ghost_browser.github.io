@@ -6,6 +6,7 @@
     <title>Google Classroom</title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=home" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=bolt" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400&display=swap');
@@ -53,35 +54,9 @@
             align-items: center;
             justify-content: center;
         }
-        .gg-browser {
-            box-sizing: border-box;
-            position: relative;
-            display: block;
-            transform: scale(var(--ggs, 1));
-            width: 24px;
-            height: 18px;
-            border: 2px solid;
-            border-radius: 3px;
+        .material-symbols-outlined.bolt {
+            font-size: 42px; /* Ajustar tamaño del ícono al tamaño del texto */
             margin-right: 10px; /* Espacio entre el ícono y el texto */
-        }
-        .gg-browser::after,
-        .gg-browser::before {
-            content: "";
-            display: block;
-            box-sizing: border-box;
-            position: absolute;
-            width: 22px;
-            height: 2px;
-            background: currentColor;
-            top: 4px;
-        }
-        .gg-browser::after {
-            border-radius: 3px;
-            width: 2px;
-            box-shadow: 
-                -6px 0 0 0,
-                6px 0 0 0;
-            left: 6px;
         }
         @keyframes glitch {
             0% {
@@ -134,7 +109,7 @@
             Home
         </a>
         <h1 class="barriecito-regular">
-            <span class="gg-browser"></span>
+            <span class="material-symbols-outlined bolt">bolt</span>
             Redirect
         </h1>
     </div>
