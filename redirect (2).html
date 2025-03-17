@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .header a {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html">&larr; Home</a>
+        <h1>Redirect</h1>
+    </div>
+    
+    <div class="container">
+        <input type="text" id="url" placeholder="Enter URL to redirect">
+        <button onclick="redirect()">Redirect</button>
+    </div>
+    
+    <script>
+        function redirect() {
+            const url = document.getElementById('url').value;
+            if (url) {
+                const newWindow = window.open('', '_blank');
+                newWindow.document.write(
+                    '<html><head><title>Redirecting...</title></head>' +
+                    `<body><script>window.location.replace("${url}");<\/script></body></html>`
+                );
+                newWindow.document.close();
+            } else {
+                alert('Please enter a valid URL');
+            }
+        }
+    </script>
+</body>
+</html>
