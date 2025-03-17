@@ -73,9 +73,15 @@
     
     <script>
         function redirect() {
-            const url = document.getElementById('url').value;
+            const url = document.getElementById('url').value.trim();
             if (url) {
-                document.getElementById('iframe').src = url;
+                // Validar que la URL comienza con "http://" o "https://"
+                const validUrl = url.startsWith('http://') || url.startsWith('https://');
+                if (validUrl) {
+                    document.getElementById('iframe').src = url;
+                } else {
+                    alert('Please enter a valid URL starting with "http://" or "https://".');
+                }
             } else {
                 alert('Please enter a valid URL');
             }
