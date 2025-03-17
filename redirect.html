@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Classroom</title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=home" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400&display=swap');
@@ -32,6 +33,12 @@
             color: white;
             text-decoration: none;
             font-size: 24px;
+            display: flex;
+            align-items: center;
+        }
+        .header a .material-symbols-outlined {
+            font-size: 24px;
+            margin-right: 5px;
         }
         .header h1 {
             font-family: "Barriecito", system-ui;
@@ -122,7 +129,10 @@
 </head>
 <body>
     <div class="header">
-        <a href="index.html">&larr; Home</a>
+        <a href="index.html">
+            <span class="material-symbols-outlined">home</span>
+            Home
+        </a>
         <h1 class="barriecito-regular">
             <span class="gg-browser"></span>
             Redirect
