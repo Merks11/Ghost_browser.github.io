@@ -38,6 +38,26 @@
             font-weight: 400;
             font-style: normal;
             font-size: 36px; /* Aumentar el tamaño de la fuente */
+            position: relative;
+            color: white;
+            animation: glitch 1s infinite;
+        }
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
+            }
+            25% {
+                text-shadow: 2px -2px #ff00ff, -2px 2px #00ffff;
+            }
+            50% {
+                text-shadow: -2px 2px #ff00ff, 2px -2px #00ffff;
+            }
+            75% {
+                text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff;
+            }
+            100% {
+                text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
+            }
         }
         .container {
             padding: 20px;
