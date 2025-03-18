@@ -40,6 +40,36 @@
             font-size: 24px;
             margin-right: 5px;
         }
+        .header h1 {
+            font-family: "Barriecito", system-ui;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 42px; /* Aumentar el tamaño de la fuente */
+            position: relative;
+            color: white;
+            animation: glitch 2s infinite; /* Hacer el glitch más lento */
+            letter-spacing: 2px; /* Añadir espaciado entre las letras */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
+            }
+            25% {
+                text-shadow: 2px -2px #ff00ff, -2px 2px #00ffff;
+            }
+            50% {
+                text-shadow: -2px 2px #ff00ff, 2px -2px #00ffff;
+            }
+            75% {
+                text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff;
+            }
+            100% {
+                text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
+            }
+        }
     </style>
 </head>
 <body>
