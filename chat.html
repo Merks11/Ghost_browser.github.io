@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Online</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #chat {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 300px;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .message {
+            border-bottom: 1px solid #eee;
+            padding: 5px 0;
+        }
+        .time {
+            font-size: 0.8em;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat Online</h1>
+    <label for="username">Nombre de usuario:</label>
+    <input type="text" id="username" placeholder="Ingresa tu nombre">
+    <div id="chat"></div>
+    <input type="text" id="message" placeholder="Escribe un mensaje">
+    <button onclick="sendMessage()">Enviar</button>
 
+    <script>
+        function sendMessage() {
+            const chat = document.getElementById('chat');
+            const username = document.getElementById('username').value;
+            const messageText = document.getElementById('message').value;
+            const timestamp = new Date().toLocaleTimeString();
+
+            if (username && messageText) {
+                const message = document.createElement('div');
+                message.className = 'message';
+                message.innerHTML = `<strong>${username}</strong>: ${messageText} <span class="time">(${timestamp})</span>`;
+                chat.insertBefore(message, chat.firstChild);
+
+                document.getElementById('message').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
