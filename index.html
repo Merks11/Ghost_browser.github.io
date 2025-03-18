@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Classroom</title>
+    <title>Ghost Browser</title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=settings" />
     <style>
@@ -32,15 +32,12 @@
         }
         .header-content {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            margin-left: 170px; /* Ajustar para que el texto toque la imagen */
         }
         .header img {
-            position: absolute;
-            left: 0; /* Colocar la imagen a la izquierda */
             width: 150px; /* Hacer la imagen más grande */
             height: auto;
+            margin-right: 20px; /* Espacio entre la imagen y el texto */
         }
         .settings-icon {
             position: absolute;
@@ -142,6 +139,7 @@
             font-size: 5em;
             display: flex;
             align-items: center;
+            margin: 0;
         }
         .header h2 {
             font-size: 3em;
@@ -228,10 +226,12 @@
     </div>
     
     <div class="header">
-        <img src="https://cdn-icons-png.flaticon.com/512/91/91453.png" alt="Ghost Icon">
         <div class="header-content">
-            <h1 class="coiny-regular">Ghost Browser</h1>
-            <h2 class="anton-regular">By Merks</h2>
+            <img src="https://cdn-icons-png.flaticon.com/512/91/91453.png" alt="Ghost Icon">
+            <div>
+                <h1 class="coiny-regular">Ghost Browser</h1>
+                <h2 class="anton-regular">By Merks</h2>
+            </div>
         </div>
         <span class="material-symbols-outlined settings-icon" onclick="openSettings()">settings</span>
     </div>
