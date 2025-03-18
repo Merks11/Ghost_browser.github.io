@@ -296,11 +296,11 @@
             // Guardar el color en localStorage para que persista entre páginas
             localStorage.setItem('bgColor', color);
 
-            // Calcular colores oscuros para el menú
-            const darkerColor = shadeColor(color, -20);
-            const darkestColor = shadeColor(color, -40);
-            document.documentElement.style.setProperty('--menu-bg-color', darkerColor);
-            document.documentElement.style.setProperty('--menu-hover-color', darkestColor);
+            // Calcular un color con menor saturación para el menú
+            const desaturatedColor = desaturateColor(color, 50);
+            const desaturatedHoverColor = desaturateColor(color, 70);
+            document.documentElement.style.setProperty('--menu-bg-color', desaturatedColor);
+            document.documentElement.style.setProperty('--menu-hover-color', desaturatedHoverColor);
         }
 
         function resetBgColor() {
@@ -310,22 +310,27 @@
             localStorage.setItem('bgColor', defaultColor);
             document.getElementById('bgColor').value = defaultColor;
 
-            // Restablecer colores oscuros para el menú
-            const darkerColor = shadeColor(defaultColor, -20);
-            const darkestColor = shadeColor(defaultColor, -40);
-            document.documentElement.style.setProperty('--menu-bg-color', darkerColor);
-            document.documentElement.style.setProperty('--menu-hover-color', darkestColor);
+            // Restablecer el color desaturado para el menú
+            const desaturatedColor = desaturateColor(defaultColor, 50);
+            const desaturatedHoverColor = desaturateColor(defaultColor, 70);
+            document.documentElement.style.setProperty('--menu-bg-color', desaturatedColor);
+            document.documentElement.style.setProperty('--menu-hover-color', desaturatedHoverColor);
         }
 
-        // Calcular un color más oscuro
-        function shadeColor(color, percent) {
+        // Función para desaturar un color
+        function desaturateColor(color, percent) {
             const f = parseInt(color.slice(1), 16),
-                t = percent < 0 ? 0 : 255,
-                p = percent < 0 ? percent * -1 : percent,
                 R = f >> 16,
                 G = (f >> 8) & 0x00FF,
                 B = f & 0x0000FF;
-            return "#" + (0x1000000 + (Math.round((t - R) * p) + R) * 0x10000 + (Math.round((t - G) * p) + G) * 0x100 + (Math.round((t - B) * p) + B)).toString(16).slice(1);
+            const t = (R + G + B) / 3; // gris medio
+            const p = percent / 100;
+            return "#" + (
+                0x1000000 +
+                (Math.round((R + p * (t - R))) * 0x10000) +
+                (Math.round((G + p * (t - G))) * 0x100) +
+                (Math.round((B + p * (t - B))))
+            ).toString(16).slice(1);
         }
 
         // Cargar el color de fondo guardado al cargar la página
@@ -336,11 +341,11 @@
                 document.documentElement.style.setProperty('--scrollbar-color', savedColor);
                 document.getElementById('bgColor').value = savedColor;
 
-                // Calcular colores oscuros para el menú
-                const darkerColor = shadeColor(savedColor, -20);
-                const darkestColor = shadeColor(savedColor, -40);
-                document.documentElement.style.setProperty('--menu-bg-color', darkerColor);
-                document.documentElement.style.setProperty('--menu-hover-color', darkestColor);
+                // Calcular colores desaturados para el menú
+                const desaturatedColor = desaturateColor(savedColor, 50);
+                const desaturatedHoverColor = desaturateColor(savedColor, 70);
+                document.documentElement.style.setProperty('--menu-bg-color', desaturatedColor);
+                document.documentElement.style.setProperty('--menu-hover-color', desaturatedHoverColor);
             } else {
                 document.getElementById('bgColor').value = '#390139';
             }
