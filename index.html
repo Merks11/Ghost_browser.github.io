@@ -131,6 +131,17 @@
         .side-menu .tools-content a:hover {
             text-decoration: underline;
         }
+        .tools-toggle {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .tools-toggle .expand-icon {
+            transition: transform 0.3s ease;
+        }
+        .tools-toggle.open .expand-icon {
+            transform: rotate(180deg);
+        }
         .container {
             padding: 20px;
             text-align: center;
@@ -243,7 +254,10 @@
     <div class="side-menu" id="sideMenu">
         <span class="close-menu" onclick="closeMenu()">&#10005;</span>
         <h1>Menu</h1>
-        <h2 onclick="toggleTools()">Tools</h2>
+        <div class="tools-toggle" onclick="toggleTools()">
+            <h2>Tools</h2>
+            <span class="material-symbols-outlined expand-icon">expand_more</span>
+        </div>
         <div class="tools-content" id="toolsContent">
             <a href="redirect.html">Redireccion</a>
             <a href="flood.html">Flood</a>
@@ -310,10 +324,13 @@
 
         function toggleTools() {
             const toolsContent = document.getElementById('toolsContent');
+            const toolsToggle = document.querySelector('.tools-toggle');
             if (toolsContent.style.display === 'none' || toolsContent.style.display === '') {
                 toolsContent.style.display = 'flex';
+                toolsToggle.classList.add('open');
             } else {
                 toolsContent.style.display = 'none';
+                toolsToggle.classList.remove('open');
             }
         }
 
