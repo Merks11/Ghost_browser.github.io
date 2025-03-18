@@ -6,6 +6,7 @@
     <title>Ghost Browser</title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=settings" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu_open" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400&display=swap');
@@ -14,8 +15,6 @@
 
         :root {
             --bg-color: #390139;
-            --menu-bg-color: #441e44;
-            --menu-hover-color: #5a065b;
             --scrollbar-color: #390139;
         }
 
@@ -53,6 +52,13 @@
             font-size: 24px;
             cursor: pointer;
         }
+        .menu-icon {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
         .settings-panel {
             position: fixed;
             top: 0;
@@ -79,28 +85,6 @@
             right: 10px;
             cursor: pointer;
             font-size: 20px;
-        }
-        .navbar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 10px;
-        }
-        .menu-button {
-            background-color: var(--menu-bg-color);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            font-family: "Bebas Neue", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-        }
-        .menu-button:hover {
-            background-color: var(--menu-hover-color);
         }
         .side-menu {
             position: fixed;
@@ -236,7 +220,7 @@
 </head>
 <body>
     <div class="navbar">
-        <button class="menu-button" onclick="openMenu()">Menu</button>
+        <span class="material-symbols-outlined menu-icon" onclick="openMenu()">menu_open</span>
     </div>
     
     <div class="side-menu" id="sideMenu">
@@ -309,12 +293,6 @@
             document.documentElement.style.setProperty('--scrollbar-color', color);
             // Guardar el color en localStorage para que persista entre páginas
             localStorage.setItem('bgColor', color);
-
-            // Calcular un color con menor saturación para el menú
-            const desaturatedColor = desaturateColor(color, 50);
-            const desaturatedHoverColor = desaturateColor(color, 70);
-            document.documentElement.style.setProperty('--menu-bg-color', desaturatedColor);
-            document.documentElement.style.setProperty('--menu-hover-color', desaturatedHoverColor);
         }
 
         function resetBgColor() {
@@ -323,28 +301,6 @@
             document.documentElement.style.setProperty('--scrollbar-color', defaultColor);
             localStorage.setItem('bgColor', defaultColor);
             document.getElementById('bgColor').value = defaultColor;
-
-            // Restablecer el color desaturado para el menú
-            const desaturatedColor = desaturateColor(defaultColor, 50);
-            const desaturatedHoverColor = desaturateColor(defaultColor, 70);
-            document.documentElement.style.setProperty('--menu-bg-color', desaturatedColor);
-            document.documentElement.style.setProperty('--menu-hover-color', desaturatedHoverColor);
-        }
-
-        // Función para desaturar un color
-        function desaturateColor(color, percent) {
-            const f = parseInt(color.slice(1), 16),
-                R = f >> 16,
-                G = (f >> 8) & 0x00FF,
-                B = f & 0x0000FF;
-            const t = (R + G + B) / 3; // gris medio
-            const p = percent / 100;
-            return "#" + (
-                0x1000000 +
-                (Math.round((R + p * (t - R))) * 0x10000) +
-                (Math.round((G + p * (t - G))) * 0x100) +
-                (Math.round((B + p * (t - B))))
-            ).toString(16).slice(1);
         }
 
         // Cargar el color de fondo guardado al cargar la página
@@ -354,12 +310,6 @@
                 document.documentElement.style.setProperty('--bg-color', savedColor);
                 document.documentElement.style.setProperty('--scrollbar-color', savedColor);
                 document.getElementById('bgColor').value = savedColor;
-
-                // Calcular colores desaturados para el menú
-                const desaturatedColor = desaturateColor(savedColor, 50);
-                const desaturatedHoverColor = desaturateColor(savedColor, 70);
-                document.documentElement.style.setProperty('--menu-bg-color', desaturatedColor);
-                document.documentElement.style.setProperty('--menu-hover-color', desaturatedHoverColor);
             } else {
                 document.getElementById('bgColor').value = '#390139';
             }
