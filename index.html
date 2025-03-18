@@ -25,7 +25,9 @@
             color: #ffffff;
         }
         .navbar {
-            position: relative;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
         }
         .header {
             background-color: transparent;
@@ -53,19 +55,14 @@
             font-family: 'Material Symbols Outlined';
         }
         .menu-icon-container, .settings-icon-container {
-            position: absolute;
+            position: relative;
             width: 50px; /* Ajusta según el tamaño del icono */
             height: 50px; /* Ajusta según el tamaño del icono */
             cursor: pointer;
-            z-index: 10;
-        }
-        .menu-icon-container {
-            left: 20px;
-            top: 20px;
         }
         .settings-icon-container {
-            right: 20px;
-            top: 20px;
+            display: flex;
+            justify-content: flex-end;
         }
         .settings-panel {
             position: fixed;
@@ -228,10 +225,12 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="menu-icon-container" onclick="openMenu()"></div>
-        <span class="material-symbols-outlined menu-icon">menu_open</span>
-        <div class="settings-icon-container" onclick="openSettings()"></div>
-        <span class="material-symbols-outlined settings-icon">settings</span>
+        <div class="menu-icon-container" onclick="openMenu()">
+            <span class="material-symbols-outlined menu-icon">menu_open</span>
+        </div>
+        <div class="settings-icon-container" onclick="openSettings()">
+            <span class="material-symbols-outlined settings-icon">settings</span>
+        </div>
     </div>
     
     <div class="side-menu" id="sideMenu">
