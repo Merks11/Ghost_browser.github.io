@@ -50,18 +50,14 @@
             font-family: "Barriecito", system-ui;
             font-weight: 400;
             font-style: normal;
-            font-size: 42px; /* Aumentar el tamaño de la fuente */
+            font-size: 42px;
             position: relative;
             color: white;
-            animation: glitch 2s infinite; /* Hacer el glitch más lento */
-            letter-spacing: 2px; /* Añadir espaciado entre las letras */
+            animation: glitch 2s infinite;
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .material-symbols-outlined.bolt {
-            font-size: 42px; /* Ajustar tamaño del ícono al tamaño del texto */
-            margin-right: 10px; /* Espacio entre el ícono y el texto */
         }
         @keyframes glitch {
             0% {
@@ -84,10 +80,22 @@
             padding: 20px;
             text-align: center;
         }
-        input[type="text"] {
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .input-group input[type="text"] {
             width: 80%;
             padding: 10px;
             margin: 10px 0;
+            font-size: 18px;
+        }
+        .input-group input[type="number"] {
+            width: 20%;
+            padding: 5px;
+            margin: 5px 0;
+            font-size: 16px;
         }
         button {
             padding: 10px 20px;
@@ -95,15 +103,10 @@
             color: white;
             border: none;
             cursor: pointer;
+            font-size: 18px;
         }
         button:hover {
             background-color: #45a049;
-        }
-        iframe {
-            width: 80%;
-            height: 500px;
-            border: none;
-            margin-top: 20px;
         }
     </style>
 </head>
@@ -114,29 +117,36 @@
             Home
         </a>
         <h1 class="barriecito-regular">
-            Redirect
+            Flood
         </h1>
     </div>
     
     <div class="container">
-        <input type="text" id="url" placeholder="Enter URL to redirect">
-        <button onclick="redirect()">Redirect</button>
-        <iframe id="iframe" src="about:blank"></iframe>
+        <div class="input-group">
+            <input type="text" id="url" placeholder="Enter URL" />
+            <input type="number" id="count" placeholder="Number of times" />
+        </div>
+        <button onclick="startFlood()">Start</button>
     </div>
-    
+
     <script>
-        function redirect() {
+        function startFlood() {
             const url = document.getElementById('url').value.trim();
-            if (url) {
-                // Validar que la URL comienza con "http://" o "https://"
+            const count = parseInt(document.getElementById('count').value.trim(), 10);
+            
+            if (url && count > 0) {
                 const validUrl = url.startsWith('http://') || url.startsWith('https://');
-                if (validUrl) {
-                    document.getElementById('iframe').src = url;
+                const invalidUrl = url.startsWith('www.');
+                
+                if (validUrl && !invalidUrl) {
+                    for (let i = 0; i < count; i++) {
+                        window.open(url, '_blank');
+                    }
                 } else {
-                    alert('Please enter a valid URL starting with "http://" or "https://".');
+                    alert('Please enter a valid URL starting with "http://" or "https://" and not starting with "www.".');
                 }
             } else {
-                alert('Please enter a valid URL');
+                alert('Please enter a valid URL and a number greater than 0.');
             }
         }
 
