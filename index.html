@@ -135,8 +135,8 @@
             font-family: "Bebas Neue", sans-serif;
             font-weight: 400;
             font-style: normal;
-            width: 150px;
-            height: 150px;
+            width: 150px; /* Anchura de todos los botones */
+            height: 150px; /* Altura de todos los botones */
             position: relative;
             display: flex;
             align-items: flex-start; /* Alinea el contenido al inicio del eje vertical */
@@ -145,10 +145,10 @@
             overflow: hidden;
             text-align: center;
         }
-        .gray-button a {
+        .gray-button a, .gray-button button {
             color: white;
             text-decoration: none;
-            font-size: 24px; /* Ajustar el tamaño de la fuente aquí */
+            font-size: 24px; /* Tamaño de fuente uniforme para todos los botones */
             z-index: 2; /* Asegura que el texto esté delante de la imagen */
             display: block;
             width: 100%;
