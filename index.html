@@ -58,12 +58,20 @@
             transition: right 0.3s ease;
             padding: 20px;
             box-sizing: border-box;
+            z-index: 1000; /* Asegurarse de que esté en la parte superior */
         }
         .settings-panel.open {
             right: 0; /* Mostrar el panel */
         }
         .settings-panel h2 {
             margin-top: 0;
+        }
+        .close-settings {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
         }
         .navbar {
             position: absolute;
@@ -237,9 +245,11 @@
     </div>
 
     <div class="settings-panel" id="settingsPanel">
+        <span class="close-settings" onclick="closeSettings()">&#10005;</span>
         <h2>Settings</h2>
         <label for="bgColor">Background Color:</label>
         <input type="color" id="bgColor" name="bgColor" onchange="changeBgColor(this.value)">
+        <button onclick="resetBgColor()">Reset to Default</button>
     </div>
     
     <div class="scroll-section">
@@ -266,7 +276,11 @@
 
     <script>
         function openSettings() {
-            document.getElementById('settingsPanel').classList.toggle('open');
+            document.getElementById('settingsPanel').classList.add('open');
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsPanel').classList.remove('open');
         }
 
         function changeBgColor(color) {
@@ -275,11 +289,21 @@
             localStorage.setItem('bgColor', color);
         }
 
+        function resetBgColor() {
+            const defaultColor = '#390139';
+            document.documentElement.style.setProperty('--bg-color', defaultColor);
+            localStorage.setItem('bgColor', defaultColor);
+            document.getElementById('bgColor').value = defaultColor;
+        }
+
         // Cargar el color de fondo guardado al cargar la página
         document.addEventListener('DOMContentLoaded', function() {
             const savedColor = localStorage.getItem('bgColor');
             if (savedColor) {
                 document.documentElement.style.setProperty('--bg-color', savedColor);
+                document.getElementById('bgColor').value = savedColor;
+            } else {
+                document.getElementById('bgColor').value = '#390139';
             }
         });
     </script>
