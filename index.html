@@ -44,21 +44,25 @@
             height: auto;
             margin-right: 20px;
         }
-        .settings-icon {
-            position: absolute;
-            right: 20px;
-            top: 20px;
+        .settings-icon, .menu-icon {
             font-size: 24px;
             cursor: pointer;
             font-family: 'Material Symbols Outlined';
         }
-        .menu-icon {
+        .menu-icon-container, .settings-icon-container {
             position: absolute;
+            width: 40px; /* Ajusta según el tamaño del icono */
+            height: 40px; /* Ajusta según el tamaño del icono */
+            cursor: pointer;
+            z-index: 10;
+        }
+        .menu-icon-container {
             left: 20px;
             top: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            font-family: 'Material Symbols Outlined';
+        }
+        .settings-icon-container {
+            right: 20px;
+            top: 20px;
         }
         .settings-panel {
             position: fixed;
@@ -221,7 +225,8 @@
 </head>
 <body>
     <div class="navbar">
-        <span class="material-symbols-outlined menu-icon" onclick="openMenu()">menu_open</span>
+        <div class="menu-icon-container" onclick="openMenu()"></div>
+        <span class="material-symbols-outlined menu-icon">menu_open</span>
     </div>
     
     <div class="side-menu" id="sideMenu">
@@ -239,7 +244,8 @@
                 <h2 class="anton-regular">By Merks</h2>
             </div>
         </div>
-        <span class="material-symbols-outlined settings-icon" onclick="openSettings()">settings</span>
+        <div class="settings-icon-container" onclick="openSettings()"></div>
+        <span class="material-symbols-outlined settings-icon">settings</span>
     </div>
 
     <div class="settings-panel" id="settingsPanel">
