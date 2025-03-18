@@ -24,6 +24,9 @@
             background-color: var(--bg-color);
             color: #ffffff;
         }
+        .navbar {
+            position: relative;
+        }
         .header {
             background-color: transparent;
             color: white;
@@ -227,6 +230,8 @@
     <div class="navbar">
         <div class="menu-icon-container" onclick="openMenu()"></div>
         <span class="material-symbols-outlined menu-icon">menu_open</span>
+        <div class="settings-icon-container" onclick="openSettings()"></div>
+        <span class="material-symbols-outlined settings-icon">settings</span>
     </div>
     
     <div class="side-menu" id="sideMenu">
@@ -244,8 +249,6 @@
                 <h2 class="anton-regular">By Merks</h2>
             </div>
         </div>
-        <div class="settings-icon-container" onclick="openSettings()"></div>
-        <span class="material-symbols-outlined settings-icon">settings</span>
     </div>
 
     <div class="settings-panel" id="settingsPanel">
