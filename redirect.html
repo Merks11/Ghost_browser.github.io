@@ -5,19 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Classroom</title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=home" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=bolt" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Barriecito&display=swap');
 
+        :root {
+            --bg-color: #390139;
+            --scrollbar-color: #390139;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #3c033d;
+            background-color: var(--bg-color);
             color: #ffffff;
         }
         .header {
@@ -26,6 +30,7 @@
             padding: 20px;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
         .header a {
             position: absolute;
@@ -134,6 +139,28 @@
                 alert('Please enter a valid URL');
             }
         }
+
+        function changeBgColor(color) {
+            document.documentElement.style.setProperty('--bg-color', color);
+            document.documentElement.style.setProperty('--scrollbar-color', color);
+            localStorage.setItem('bgColor', color);
+        }
+
+        function resetBgColor() {
+            const defaultColor = '#390139';
+            document.documentElement.style.setProperty('--bg-color', defaultColor);
+            document.documentElement.style.setProperty('--scrollbar-color', defaultColor);
+            localStorage.setItem('bgColor', defaultColor);
+            document.getElementById('bgColor').value = defaultColor;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedColor = localStorage.getItem('bgColor');
+            if (savedColor) {
+                document.documentElement.style.setProperty('--bg-color', savedColor);
+                document.documentElement.style.setProperty('--scrollbar-color', savedColor);
+            }
+        });
     </script>
 </body>
 </html>
