@@ -15,7 +15,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #3c033d;
+            background-color: #390139; /* Cambiar el color de fondo */
             color: #ffffff;
         }
         .header {
@@ -38,7 +38,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #3c033d;
+            background-color: #390139; /* Cambiar el color de fondo del dropdown */
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
@@ -111,6 +111,17 @@
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
+        }
+        .scroll-section::-webkit-scrollbar {
+            width: 12px;
+        }
+        .scroll-section::-webkit-scrollbar-track {
+            background: #390139; /* Cambiar el color de fondo del track del scrollbar */
+        }
+        .scroll-section::-webkit-scrollbar-thumb {
+            background-color: #390139; /* Cambiar el color del thumb del scrollbar */
+            border-radius: 10px;
+            border: 3px solid #390139; /* Cambiar el color del borde del thumb */
         }
         .gray-button {
             background-color: gray;
