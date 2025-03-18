@@ -115,13 +115,20 @@
             cursor: pointer;
             font-size: 20px;
         }
-        .side-menu a {
+        .side-menu h1, .side-menu h2 {
+            margin: 10px 0;
+        }
+        .side-menu .tools-content {
+            display: none;
+            flex-direction: column;
+        }
+        .side-menu .tools-content a {
             color: black;
             display: block;
             padding: 10px 0;
             text-decoration: none;
         }
-        .side-menu a:hover {
+        .side-menu .tools-content a:hover {
             text-decoration: underline;
         }
         .container {
@@ -221,9 +228,6 @@
             pointer-events: none;
             bottom: 0;
         }
-        .side-menu h1, .side-menu h2 {
-            margin: 10px 0;
-        }
     </style>
 </head>
 <body>
@@ -239,10 +243,12 @@
     <div class="side-menu" id="sideMenu">
         <span class="close-menu" onclick="closeMenu()">&#10005;</span>
         <h1>Menu</h1>
-        <h2>Tools</h2>
-        <a href="redirect.html">Redireccion</a>
-        <a href="flood.html">Flood</a>
-        <a href="chat.html">Chat</a>
+        <h2 onclick="toggleTools()">Tools</h2>
+        <div class="tools-content" id="toolsContent">
+            <a href="redirect.html">Redireccion</a>
+            <a href="flood.html">Flood</a>
+            <a href="chat.html">Chat</a>
+        </div>
     </div>
     
     <div class="header">
@@ -300,6 +306,15 @@
 
         function closeMenu() {
             document.getElementById('sideMenu').classList.remove('open');
+        }
+
+        function toggleTools() {
+            const toolsContent = document.getElementById('toolsContent');
+            if (toolsContent.style.display === 'none' || toolsContent.style.display === '') {
+                toolsContent.style.display = 'flex';
+            } else {
+                toolsContent.style.display = 'none';
+            }
         }
 
         function changeBgColor(color) {
