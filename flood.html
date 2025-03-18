@@ -74,11 +74,22 @@
             padding: 20px;
             text-align: center;
         }
-        input[type="text"], input[type="number"] {
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .input-group input[type="text"] {
             width: 80%;
             padding: 10px;
             margin: 10px 0;
             font-size: 18px;
+        }
+        .input-group input[type="number"] {
+            width: 20%;
+            padding: 5px;
+            margin: 5px 0;
+            font-size: 16px;
         }
         button {
             padding: 10px 20px;
@@ -105,8 +116,10 @@
     </div>
     
     <div class="container">
-        <input type="text" id="url" placeholder="Enter URL" />
-        <input type="number" id="count" placeholder="Number of times" />
+        <div class="input-group">
+            <input type="text" id="url" placeholder="Enter URL" />
+            <input type="number" id="count" placeholder="Number of times" />
+        </div>
         <button onclick="startFlood()">Start</button>
     </div>
 
