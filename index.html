@@ -136,7 +136,7 @@
             max-height: 90%;
             position: absolute;
             z-index: 1; /* Asegura que la imagen esté detrás del texto */
-            pointer-events: none; /* Permite hacer clic a través de la imagen */
+            pointer-events: auto; /* Permite hacer clic en la imagen */
         }
     </style>
 </head>
@@ -158,7 +158,9 @@
     <div class="scroll-section">
         <a href="redirect.html" class="gray-button">
             Redirect
-            <img src="https://pacotraver.wordpress.com/wp-content/uploads/2014/06/incognito.png" alt="Imagen">
+            <a href="redirect.html">
+                <img src="https://pacotraver.wordpress.com/wp-content/uploads/2014/06/incognito.png" alt="Imagen">
+            </a>
         </a>
         <button class="gray-button">Button 2</button>
         <button class="gray-button">Button 3</button>
