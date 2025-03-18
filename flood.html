@@ -129,8 +129,15 @@
             const count = parseInt(document.getElementById('count').value.trim(), 10);
             
             if (url && count > 0) {
-                for (let i = 0; i < count; i++) {
-                    window.open(url, '_blank');
+                const validUrl = url.startsWith('http://') || url.startsWith('https://');
+                const invalidUrl = url.startsWith('www.');
+                
+                if (validUrl && !invalidUrl) {
+                    for (let i = 0; i < count; i++) {
+                        window.open(url, '_blank');
+                    }
+                } else {
+                    alert('Please enter a valid URL starting with "http://" or "https://" and not starting with "www.".');
                 }
             } else {
                 alert('Please enter a valid URL and a number greater than 0.');
