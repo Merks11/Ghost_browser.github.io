@@ -16,7 +16,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #3c033d;
+            background-color: #390139;
             color: #ffffff;
         }
         .header {
@@ -44,11 +44,11 @@
             font-family: "Barriecito", system-ui;
             font-weight: 400;
             font-style: normal;
-            font-size: 42px; /* Aumentar el tamaño de la fuente */
+            font-size: 42px;
             position: relative;
             color: white;
-            animation: glitch 2s infinite; /* Hacer el glitch más lento */
-            letter-spacing: 2px; /* Añadir espaciado entre las letras */
+            animation: glitch 2s infinite;
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -70,6 +70,27 @@
                 text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
             }
         }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        input[type="text"], input[type="number"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -82,5 +103,26 @@
             Flood
         </h1>
     </div>
+    
+    <div class="container">
+        <input type="text" id="url" placeholder="Enter URL" />
+        <input type="number" id="count" placeholder="Number of times" />
+        <button onclick="startFlood()">Start</button>
+    </div>
+
+    <script>
+        function startFlood() {
+            const url = document.getElementById('url').value.trim();
+            const count = parseInt(document.getElementById('count').value.trim(), 10);
+            
+            if (url && count > 0) {
+                for (let i = 0; i < count; i++) {
+                    window.open(url, '_blank');
+                }
+            } else {
+                alert('Please enter a valid URL and a number greater than 0.');
+            }
+        }
+    </script>
 </body>
 </html>
