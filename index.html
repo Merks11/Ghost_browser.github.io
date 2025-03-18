@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghost Browser</title>
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png" type="image/x-icon"> <!-- Modifica esta línea -->
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400&display=swap'); /* Import Tektur font */
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); /* Import Bebas Neue font */
+        @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #3c033d; /* Cambiar el color de fondo */
-            color: #ffffff; /* Texto en blanco para mejor contraste */
+            background-color: #3c033d;
+            color: #ffffff;
         }
         .header {
-            background-color: transparent; /* Quitar la barra roja */
+            background-color: transparent;
             color: white;
             padding: 20px;
             text-align: center;
@@ -37,25 +37,25 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #3c033d; /* Cambiar el color de fondo del dropdown */
+            background-color: #3c033d;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
         .dropdown-content a {
-            color: white; /* Texto en blanco para mejor contraste */
+            color: white;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
         }
         .dropdown-content a:hover {
-            background-color: #5a065b; /* Color de fondo al pasar el ratón */
+            background-color: #5a065b;
         }
         .dropdown:hover .dropdown-content {
             display: block;
         }
         .dropbtn {
-            background-color: #441e44; /* Cambiar el color de fondo del botón */
+            background-color: #441e44;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -63,12 +63,12 @@
             font-size: 16px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            font-family: "Bebas Neue", sans-serif; /* Aplicar la nueva fuente */
+            font-family: "Bebas Neue", sans-serif;
             font-weight: 400;
             font-style: normal;
         }
         .dropbtn span {
-            font-size: 20px; /* Ajustar el tamaño del texto del botón */
+            font-size: 20px;
         }
         .dropbtn:hover {
             background-color: #5a065b;
@@ -82,23 +82,23 @@
             font-weight: 400;
             font-style: normal;
         }
-        .tektur-unique { /* Add Tektur font style */
+        .tektur-unique {
             font-family: "Tektur", sans-serif;
             font-optical-sizing: auto;
             font-weight: 400;
             font-style: normal;
             font-variation-settings: "wdth" 100;
         }
-        .header h1 { /* Añadir estilo para el nuevo título */
-            font-size: 5em; /* Ajustar el tamaño del título */
+        .header h1 {
+            font-size: 5em;
         }
-        .header h2 { /* Añadir estilo para el subtítulo */
-            font-size: 3em; /* Ajustar el tamaño del subtítulo */
+        .header h2 {
+            font-size: 3em;
         }
         .scroll-section {
             height: 200px;
             overflow-y: scroll;
-            background-color: #441e44; /* Color de fondo de la nueva sección */
+            background-color: #441e44;
             padding: 20px;
             text-align: center;
         }
@@ -110,16 +110,25 @@
             cursor: pointer;
             font-size: 20px;
             border-radius: 5px;
-            font-family: "Bebas Neue", sans-serif; /* Aplicar la nueva fuente */
+            font-family: "Bebas Neue", sans-serif;
             font-weight: 400;
             font-style: normal;
             margin: 10px;
             width: 150px;
             height: 150px;
+            position: relative;
         }
         .gray-button a {
             color: white;
             text-decoration: none;
+        }
+        .gray-button img {
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
@@ -135,11 +144,14 @@
     
     <div class="header">
         <h1 class="coiny-regular">Ghost Browser</h1>
-        <h2 class="tektur-unique">By Merks</h2> <!-- Apply the new font style to the subtitle -->
+        <h2 class="tektur-unique">By Merks</h2>
     </div>
     
     <div class="scroll-section">
-        <button class="gray-button"><a href="redirect.html">Redirect</a></button>
+        <button class="gray-button">
+            <a href="redirect.html">Redirect</a>
+            <img src="URL_DE_LA_IMAGEN" alt="Imagen">
+        </button>
         <button class="gray-button">Button 2</button>
         <button class="gray-button">Button 3</button>
         <button class="gray-button">Button 4</button>
