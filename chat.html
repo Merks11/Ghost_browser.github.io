@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Online</title>
+    <title>Google Classroom</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/59/Google_Classroom_Logo.png" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400&display=swap');
@@ -27,11 +28,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
-        }
-        .header img {
-            margin-right: 10px;
-            width: 30px;
-            height: auto;
+            justify-content: space-between;
         }
         .header a {
             background-color: transparent;
@@ -44,9 +41,40 @@
             align-items: center;
             font-family: "Barriecito", system-ui; /* Utilizar la fuente Barriecito */
         }
+        .header h1 {
+            font-family: "Barriecito", system-ui; /* Utilizar la fuente Barriecito */
+            font-weight: 400;
+            font-style: normal;
+            font-size: 42px; /* Aumentar el tamaño de la fuente */
+            color: white;
+            animation: glitch 2s infinite; /* Efecto glitch */
+            letter-spacing: 2px; /* Añadir espaciado entre las letras */
+            margin: 0;
+        }
+        .material-symbols-outlined {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
+            }
+            25% {
+                text-shadow: 2px -2px #ff00ff, -2px 2px #00ffff;
+            }
+            50% {
+                text-shadow: -2px 2px #ff00ff, 2px -2px #00ffff;
+            }
+            75% {
+                text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff;
+            }
+            100% {
+                text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
+            }
+        }
         .iframe-container {
             position: absolute;
-            top: 50px; /* Espacio para la franja superior */
+            top: 70px; /* Espacio para la franja superior */
             left: 0;
             right: 0;
             bottom: 0;
@@ -64,6 +92,7 @@
             <span class="material-symbols-outlined">home</span>
             Home
         </a>
+        <h1>Chat</h1>
     </div>
     <div class="iframe-container">
         <iframe src="https://tlk.io/your-chat-room"></iframe>
