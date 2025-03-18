@@ -12,11 +12,18 @@
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
+        :root {
+            --bg-color: #390139;
+            --menu-bg-color: #441e44;
+            --menu-hover-color: #5a065b;
+            --scrollbar-color: #390139;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color, #390139); /* Usar una variable CSS para el color de fondo */
+            background-color: var(--bg-color);
             color: #ffffff;
         }
         .header {
@@ -28,20 +35,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative; /* Añadir posición relativa para posicionar la imagen */
+            position: relative;
         }
         .header-content {
             display: flex;
             align-items: center;
         }
         .header img {
-            width: 150px; /* Hacer la imagen más grande */
+            width: 150px;
             height: auto;
-            margin-right: 20px; /* Espacio entre la imagen y el texto */
+            margin-right: 20px;
         }
         .settings-icon {
             position: absolute;
-            right: 20px; /* Colocar el icono de configuración a la derecha */
+            right: 20px;
             top: 20px;
             font-size: 24px;
             cursor: pointer;
@@ -49,7 +56,7 @@
         .settings-panel {
             position: fixed;
             top: 0;
-            right: -300px; /* Ocultar fuera de la vista */
+            right: -300px;
             width: 300px;
             height: 100%;
             background-color: #ffffff;
@@ -58,10 +65,10 @@
             transition: right 0.3s ease;
             padding: 20px;
             box-sizing: border-box;
-            z-index: 1000; /* Asegurarse de que esté en la parte superior */
+            z-index: 1000;
         }
         .settings-panel.open {
-            right: 0; /* Mostrar el panel */
+            right: 0;
         }
         .settings-panel h2 {
             margin-top: 0;
@@ -86,7 +93,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #390139; /* Cambiar el color de fondo del dropdown */
+            background-color: var(--menu-bg-color);
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
@@ -98,13 +105,13 @@
             display: block;
         }
         .dropdown-content a:hover {
-            background-color: #5a065b;
+            background-color: var(--menu-hover-color);
         }
         .dropdown:hover .dropdown-content {
             display: block;
         }
         .dropbtn {
-            background-color: #441e44;
+            background-color: var(--menu-bg-color);
             color: white;
             padding: 10px 20px;
             border: none;
@@ -120,7 +127,7 @@
             font-size: 20px;
         }
         .dropbtn:hover {
-            background-color: #5a065b;
+            background-color: var(--menu-hover-color);
         }
         .container {
             padding: 20px;
@@ -162,20 +169,20 @@
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
-            align-items: flex-end; 
-            margin: 0 auto; /* Centrar horizontalmente */
-            width: 90%; /* Ajustar el ancho según sea necesario */
+            align-items: flex-end;
+            margin: 0 auto;
+            width: 90%;
         }
         .scroll-section::-webkit-scrollbar {
             width: 12px;
         }
         .scroll-section::-webkit-scrollbar-track {
-            background: #390139; /* Cambiar el color de fondo del track del scrollbar */
+            background: var(--scrollbar-color);
         }
         .scroll-section::-webkit-scrollbar-thumb {
-            background-color: #390139; /* Cambiar el color del thumb del scrollbar */
+            background-color: var(--scrollbar-color);
             border-radius: 10px;
-            border: 3px solid #390139; /* Cambiar el color del borde del thumb */
+            border: 3px solid var(--scrollbar-color);
         }
         .gray-button {
             background-color: gray;
@@ -187,37 +194,37 @@
             font-family: "Bebas Neue", sans-serif;
             font-weight: 400;
             font-style: normal;
-            width: 150px; /* Anchura de todos los botones */
-            height: 150px; /* Altura de todos los botones */
+            width: 150px;
+            height: 150px;
             position: relative;
             display: flex;
-            align-items: flex-start; /* Alinea el contenido al inicio del eje vertical */
-            justify-content: center; /* Centra el contenido horizontalmente */
-            padding-top: 10px; /* Ajusta el espacio superior para alinear verticalmente */
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 10px;
             overflow: hidden;
             text-align: center;
         }
         .gray-button a, .gray-button button {
             color: white;
             text-decoration: none;
-            font-size: 24px; /* Tamaño de fuente uniforme para todos los botones */
-            z-index: 2; /* Asegura que el texto esté delante de la imagen */
+            font-size: 24px;
+            z-index: 2;
             display: block;
             width: 100%;
             height: 100%;
             display: flex;
-            align-items: flex-start; /* Alinea el contenido al inicio del eje vertical */
-            justify-content: center; /* Centra el contenido horizontalmente */
-            padding-top: 10px; /* Ajusta el espacio superior para alinear verticalmente */
-            position: relative; /* Asegura que el texto tenga un z-index más alto */
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 10px;
+            position: relative;
         }
         .gray-button img {
             max-width: 100%;
-            max-height: 70%; /* Ajusta la altura máxima para que la imagen esté más pequeña */
+            max-height: 70%;
             position: absolute;
-            z-index: 1; /* Asegura que la imagen esté detrás del texto */
-            pointer-events: none; /* Permite hacer clic a través de la imagen */
-            bottom: 0; /* Alinea la imagen verticalmente desde abajo */
+            z-index: 1;
+            pointer-events: none;
+            bottom: 0;
         }
     </style>
 </head>
@@ -285,15 +292,40 @@
 
         function changeBgColor(color) {
             document.documentElement.style.setProperty('--bg-color', color);
+            document.documentElement.style.setProperty('--scrollbar-color', color);
             // Guardar el color en localStorage para que persista entre páginas
             localStorage.setItem('bgColor', color);
+
+            // Calcular colores oscuros para el menú
+            const darkerColor = shadeColor(color, -20);
+            const darkestColor = shadeColor(color, -40);
+            document.documentElement.style.setProperty('--menu-bg-color', darkerColor);
+            document.documentElement.style.setProperty('--menu-hover-color', darkestColor);
         }
 
         function resetBgColor() {
             const defaultColor = '#390139';
             document.documentElement.style.setProperty('--bg-color', defaultColor);
+            document.documentElement.style.setProperty('--scrollbar-color', defaultColor);
             localStorage.setItem('bgColor', defaultColor);
             document.getElementById('bgColor').value = defaultColor;
+
+            // Restablecer colores oscuros para el menú
+            const darkerColor = shadeColor(defaultColor, -20);
+            const darkestColor = shadeColor(defaultColor, -40);
+            document.documentElement.style.setProperty('--menu-bg-color', darkerColor);
+            document.documentElement.style.setProperty('--menu-hover-color', darkestColor);
+        }
+
+        // Calcular un color más oscuro
+        function shadeColor(color, percent) {
+            const f = parseInt(color.slice(1), 16),
+                t = percent < 0 ? 0 : 255,
+                p = percent < 0 ? percent * -1 : percent,
+                R = f >> 16,
+                G = (f >> 8) & 0x00FF,
+                B = f & 0x0000FF;
+            return "#" + (0x1000000 + (Math.round((t - R) * p) + R) * 0x10000 + (Math.round((t - G) * p) + G) * 0x100 + (Math.round((t - B) * p) + B)).toString(16).slice(1);
         }
 
         // Cargar el color de fondo guardado al cargar la página
@@ -301,7 +333,14 @@
             const savedColor = localStorage.getItem('bgColor');
             if (savedColor) {
                 document.documentElement.style.setProperty('--bg-color', savedColor);
+                document.documentElement.style.setProperty('--scrollbar-color', savedColor);
                 document.getElementById('bgColor').value = savedColor;
+
+                // Calcular colores oscuros para el menú
+                const darkerColor = shadeColor(savedColor, -20);
+                const darkestColor = shadeColor(savedColor, -40);
+                document.documentElement.style.setProperty('--menu-bg-color', darkerColor);
+                document.documentElement.style.setProperty('--menu-hover-color', darkestColor);
             } else {
                 document.getElementById('bgColor').value = '#390139';
             }
