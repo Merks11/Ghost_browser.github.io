@@ -42,7 +42,7 @@
         }
         .header a {
             position: absolute;
-            left: 10px;
+            left: 30px;
             top: 10px;
             color: white;
             text-decoration: none;
@@ -110,6 +110,7 @@
             border: none;
             margin-top: 20px;
             background-color: #fff;
+            display: none;
         }
     </style>
 </head>
@@ -122,16 +123,22 @@
         <h1>Redirect</h1>
     </div>
     <div class="container">
-        <input type="text" id="searchInput" placeholder="Enter URL or search term">
+        <input type="text" id="searchInput" placeholder="Enter URL (https:// or http://)">
         <button onclick="search()">Search</button>
         <iframe id="resultFrame"></iframe>
     </div>
 
     <script>
         function search() {
-            const input = document.getElementById('searchInput').value;
+            const input = document.getElementById('searchInput').value.trim();
             const iframe = document.getElementById('resultFrame');
-            iframe.src = input;
+            
+            if (input.startsWith('http://') || input.startsWith('https://')) {
+                iframe.src = input;
+                iframe.style.display = 'block';
+            } else {
+                alert('Please enter a valid URL starting with "http://" or "https://"');
+            }
         }
 
         // Cargar el color de fondo guardado al cargar la página
