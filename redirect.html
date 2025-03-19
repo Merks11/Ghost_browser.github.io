@@ -83,8 +83,15 @@
         .container {
             text-align: center;
         }
-        input[type="text"] {
+        .input-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 80%;
+            margin: 0 auto;
+        }
+        input[type="text"] {
+            flex: 1;
             padding: 10px;
             font-size: 16px;
             margin: 10px 0;
@@ -99,6 +106,7 @@
             background-color: #4CAF50;
             color: white;
             border: none;
+            margin-left: 10px;
         }
         button:hover {
             background-color: #45a049;
@@ -122,8 +130,10 @@
         <h1>Redirect</h1>
     </div>
     <div class="container">
-        <input type="text" id="searchInput" placeholder="Enter URL (https:// or http://)">
-        <button onclick="search()">Search</button>
+        <div class="input-group">
+            <input type="text" id="searchInput" placeholder="Enter URL (https:// or http://)">
+            <button onclick="search()">Search</button>
+        </div>
         <iframe id="resultFrame"></iframe>
     </div>
 
