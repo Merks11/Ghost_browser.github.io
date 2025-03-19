@@ -117,36 +117,29 @@
             Home
         </a>
         <h1 class="barriecito-regular">
-            Flood
+            Redirect
         </h1>
     </div>
     
     <div class="container">
         <div class="input-group">
-            <input type="text" id="url" placeholder="Enter URL" />
-            <input type="number" id="count" placeholder="Number of times" />
+            <input type="text" id="url" placeholder="Enter URL to redirect to" />
+            <input type="number" id="delay" placeholder="Delay in seconds" />
         </div>
-        <button onclick="startFlood()">Start</button>
+        <button onclick="redirect()">Redirect</button>
     </div>
 
     <script>
-        function startFlood() {
+        function redirect() {
             const url = document.getElementById('url').value.trim();
-            const count = parseInt(document.getElementById('count').value.trim(), 10);
+            const delay = parseInt(document.getElementById('delay').value.trim(), 10) * 1000;
             
-            if (url && count > 0) {
-                const validUrl = url.startsWith('http://') || url.startsWith('https://');
-                const invalidUrl = url.startsWith('www.');
-                
-                if (validUrl && !invalidUrl) {
-                    for (let i = 0; i < count; i++) {
-                        window.open(url, '_blank');
-                    }
-                } else {
-                    alert('Please enter a valid URL starting with "http://" or "https://" and not starting with "www.".');
-                }
+            if (url && delay >= 0) {
+                setTimeout(() => {
+                    window.location.href = url;
+                }, delay);
             } else {
-                alert('Please enter a valid URL and a number greater than 0.');
+                alert('Please enter a valid URL and a delay.');
             }
         }
 
