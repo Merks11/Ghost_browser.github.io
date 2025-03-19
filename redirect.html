@@ -28,7 +28,6 @@
             align-items: center;
             justify-content: flex-start;
             height: 100vh;
-            overflow: hidden;
         }
         .header {
             background-color: transparent;
@@ -87,12 +86,6 @@
         .container {
             text-align: center;
             margin-top: 100px; /* Add margin to account for fixed header */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
         }
         .input-group {
             display: flex;
@@ -130,9 +123,6 @@
             background-color: #fff;
             display: none;
         }
-        .container.active {
-            transform: translateY(-50%);
-        }
     </style>
 </head>
 <body>
@@ -143,7 +133,7 @@
         </a>
         <h1>Redirect</h1>
     </div>
-    <div class="container" id="container">
+    <div class="container">
         <div class="input-group">
             <input type="text" id="searchInput" placeholder="Enter URL (https:// or http://)">
             <button onclick="search()">Search</button>
@@ -155,12 +145,10 @@
         function search() {
             const input = document.getElementById('searchInput').value.trim();
             const iframe = document.getElementById('resultFrame');
-            const container = document.getElementById('container');
             
             if (input.startsWith('http://') || input.startsWith('https://')) {
                 iframe.src = input;
                 iframe.style.display = 'block';
-                container.classList.add('active');
             } else {
                 alert('Please enter a valid URL starting with "http://" or "https://"');
             }
