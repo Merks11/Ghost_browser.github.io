@@ -26,7 +26,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             height: 100vh;
         }
         .header {
@@ -34,11 +34,14 @@
             color: white;
             padding: 20px;
             text-align: center;
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
+            z-index: 1000;
         }
         .header a {
             position: absolute;
@@ -82,6 +85,7 @@
         }
         .container {
             text-align: center;
+            margin-top: 100px; /* Add margin to account for fixed header */
         }
         .input-group {
             display: flex;
