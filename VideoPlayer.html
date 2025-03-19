@@ -4,12 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        #video-container {
+            width: 100%;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        .search-container input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .search-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Video Player</h1>
-    <div id="video-container">
-        <!-- Iframe para navegar y reproducir videos de YouTube -->
-        <iframe width="100%" height="600" src="https://www.youtube.com" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="search-container">
+        <input type="text" id="videoUrl" placeholder="Enter YouTube video URL">
+        <button onclick="loadVideo()">Load Video</button>
     </div>
+    <div class="error-message" id="errorMessage"></div>
+    <div id="video-container">
+        <iframe id="videoPlayer" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        function loadVideo() {
+            const videoUrl = document.getElementById('videoUrl').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const videoPlayer = document.getElementById('videoPlayer');
+
+            if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
+                const videoId = getVideoIdFromUrl(videoUrl);
+                if (videoId) {
+                    videoPlayer.src = `https://www.youtube.com/embed/${videoId}`;
+                    errorMessage.textContent = '';
+                } else {
+                    errorMessage.textContent = 'Invalid YouTube URL. Please try again.';
+                }
+            } else {
+                errorMessage.textContent = 'Only YouTube URLs are allowed.';
+            }
+        }
+
+        function getVideoIdFromUrl(url) {
+            const urlObj = new URL(url);
+            if (urlObj.hostname === 'www.youtube.com') {
+                return urlObj.searchParams.get('v');
+            } else if (urlObj.hostname === 'youtu.be') {
+                return urlObj.pathname.substring(1);
+            }
+            return null;
+        }
+    </script>
 </body>
 </html>
