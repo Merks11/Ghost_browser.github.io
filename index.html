@@ -350,12 +350,12 @@
         function toggleTools() {
             const toolsContent = document.getElementById('toolsContent');
             const toolsToggle = document.querySelector('.tools-toggle');
-            if (toolsContent.style.display === 'none' || toolsContent.style.display === '') {
-                toolsContent.classList.add('open');
-                toolsToggle.classList.add('open');
-            } else {
+            if (toolsContent.classList.contains('open')) {
                 toolsContent.classList.remove('open');
                 toolsToggle.classList.remove('open');
+            } else {
+                toolsContent.classList.add('open');
+                toolsToggle.classList.add('open');
             }
         }
 
